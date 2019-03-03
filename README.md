@@ -57,7 +57,7 @@ selectConfig: EditOnClickConfig = {
 ### `EditOnClickConfig`
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `type` | 输入框的类型 |  `'text' | 'number'  | 'minmax' | 'select' | 'email' | 'password' | 'textarea'` | `'text'` |
+| `type` | 输入框的类型 | `'text'｜'number'｜'minmax'｜'select'｜'email'｜'password'｜'textarea'` | `'text'` |
 | `size` | 输入框的大小，和 NG-ZORRO 中 `input` `[nzSize]` 一致 | `'large'｜'small'｜'default'` | `'small'` |
 | `width` | 输入框的宽度，单位为`px` | `number` | `60` `select` 类型默认为 `100` |
 | `editable` | 是否可编辑 | `boolean` | `true` |
@@ -67,5 +67,5 @@ selectConfig: EditOnClickConfig = {
 | `step` | 精度 | `number` | `1` |
 | `maxLength` | 最大长度 | `number` | - |
 | `pattern` | 用于验证输入字段的正则表达式 | `RegExp` | - |
-| `selectOptions` | `select` 类型输入框的选项 | `Array<{ label: string | number; value: any; selected?: boolean; }>` | - |
+| `selectOptions` | `select` 类型输入框的选项 | `Array<{ label: string｜number; value: any; selected?: boolean; }>` | - |
 | `placeholder` | 表单元素的占位文本 | `string` | - |
