@@ -1,24 +1,71 @@
-# EditOnClick
+# Angular EditOnClick
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+在点击文本时变为输入框，配合 [NG-ZORRO](https://github.com/NG-ZORRO/ng-zorro-antd) 
 
-## Code scaffolding
+[Demo](http://sioxas.github.io/edit-on-click/) 
 
-Run `ng generate component component-name --project edit-on-click` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project edit-on-click`.
-> Note: Don't forget to add `--project edit-on-click` or else it will be added to the default project in your `angular.json` file. 
+## 安装
 
-## Build
+```bash
+npm install edit-on-click --save
+```
+```typescript
+import { EditOnClickModule } from 'edit-on-click';
 
-Run `ng build edit-on-click` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
+  imports: [ EditOnClickModule ]
+})
+export class AppModule {
+}
+```
 
-## Publishing
+## 如何使用
 
-After building your library with `ng build edit-on-click`, go to the dist folder `cd dist/edit-on-click` and run `npm publish`.
+### 基本用法
+```html
+<p [(editOnClick)]="text">{{text}}</p>
+```
+```typescript
+text = 'Click me!';
+```
+### 使用配置项
+#### 指定输入框类型为 number
+```html
+<p [(editOnClick)]="count" [editOnClickConfig]="{type:'number'}">{{count}}</p>
+```
+```typescript
+count = 10;
+```
+#### 指定输入框类型为 select
+```html
+<p [(editOnClick)]="name" [editOnClickConfig]="selectConfig">{{name}}</p>
+```
+```typescript
+name = '小笼包';
+selectConfig: EditOnClickConfig = {
+  type: 'select',
+  selectOptions: [
+    { label: '小笼包', value: '小笼包' },
+    { label: '小龙虾', value: '小龙虾' },
+    { label: '生煎', value: '生煎' },
+    { label: '馄饨', value: '馄饨' },
+  ]
+};
+```
 
-## Running unit tests
-
-Run `ng test edit-on-click` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## API
+### `EditOnClickConfig`
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `type` | 输入框的类型 |  `'text' | 'number'  | 'minmax' | 'select' | 'email' | 'password' | 'textarea'` | `'text'` |
+| `size` | 输入框的大小，和 NG-ZORRO 中 `input` `[nzSize]` 一致 | `'large'｜'small'｜'default'` | `'small'` |
+| `width` | 输入框的宽度，单位为`px` | `number` | `60` `select` 类型默认为 `100` |
+| `editable` | 是否可编辑 | `boolean` | `true` |
+| `required` | 是否允必填 | `boolean` | `true` |
+| `max` | 最大值 | `number` | - |
+| `min` | 最小值 | `number` | - |
+| `step` | 精度 | `number` | `1` |
+| `maxLength` | 最大长度 | `number` | - |
+| `pattern` | 用于验证输入字段的正则表达式 | `RegExp` | - |
+| `selectOptions` | `select` 类型输入框的选项 | `Array<{ label: string | number; value: any; selected?: boolean; }>` | - |
+| `placeholder` | 表单元素的占位文本 | `string` | - |
