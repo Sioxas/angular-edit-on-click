@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "edit-on-click": [
+        "dist/edit-on-click"
+      ],
+      "edit-on-click/*": [
+        "dist/edit-on-click/*"
+      ]
+    }
   }
 }
