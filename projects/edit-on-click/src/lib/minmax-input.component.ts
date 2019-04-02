@@ -126,10 +126,10 @@ export class MinmaxInputComponent implements EditOnClickComponent, AfterViewInit
   }
 
   minmaxChange() {
-    this.minmax.min = this.min;
-    this.minmax.max = this.max;
-    this.minmax = new MinMax(this.minmax);
-    if (this.maxInput.nativeElement.validity.valid && this.minInput.nativeElement.validity.valid) {
+    if (this.valid) {
+      this.minmax.min = this.min;
+      this.minmax.max = this.max;
+      this.minmax = new MinMax(this.minmax);
       this.valueChange.emit(this.minmax);
     }
   }

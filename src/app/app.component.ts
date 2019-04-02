@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EditOnClickConfig } from 'edit-on-click';
+import { EditOnClickConfig, MinMax } from 'edit-on-click';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +19,12 @@ export class AppComponent {
       { label: '生煎', value: '生煎' },
       { label: '馄饨', value: '馄饨' },
     ]
+  };
+
+  minmax = new MinMax(0, 0, 2);
+  minmaxConfig: EditOnClickConfig = {
+    type:'minmax',
+    max:100,
+    min:0
   };
 }
